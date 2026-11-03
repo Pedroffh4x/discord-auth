@@ -50,7 +50,7 @@ const DiscordAuthCard: React.FC = () => {
       }
 
       try {
-        const redirectUri = "https://www.fusion7.shop/verify-callback.html";
+        const redirectUri = "https://fusion7.shop/verify-callback.html";
         const res = await fetch(`${SUPABASE_URL}/functions/v1/discord-oauth-callback`, {
           method: 'POST',
           headers: {
