@@ -182,11 +182,43 @@ const DiscordAuthCard: React.FC = () => {
       {/* Divisor decorativo */}
       <div className={styles.divider} />
 
+      {/* Botão Login com Discord (aparece apenas quando não está autenticado) */}
+      {!isComplete && (
+        <a
+          href={`${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/auth/discord`}
+          className={styles.discordLoginBtn}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 10,
+            width: '80%',
+            padding: '12px 0',
+            margin: '16px auto 0',
+            borderRadius: 4,
+            background: '#5865F2',
+            color: '#fff',
+            fontWeight: 600,
+            fontSize: 14,
+            textDecoration: 'none',
+            transition: 'background 0.2s',
+            cursor: 'pointer',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = '#4752c4'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = '#5865F2'; }}
+        >
+          <svg width="20" height="15" viewBox="0 0 71 55" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60.1045 13.8956C55.5792 11.8214 50.7265 10.2916 45.6527 9.41542C44.968 10.6425 44.1739 12.1395 43.6249 13.3999C38.2225 12.5833 32.8201 12.5833 27.5283 13.3999C26.9793 12.1395 26.158 10.6425 25.5006 9.41542C20.3996 10.2916 15.5469 11.8214 11.0216 13.8956C1.97129 27.5391 -0.491089 40.8493 0.740089 53.968C6.11401 57.9417 11.3241 60.3579 16.4523 61.9303C17.738 60.1779 18.8872 58.3164 19.8727 56.373C18.0201 55.6796 16.2493 54.8225 14.5879 53.8291C15.0244 53.5019 15.4336 53.1746 15.8428 52.8473C25.9749 57.538 37.0879 57.538 47.0291 52.8473C47.4383 53.2019 47.8475 53.5019 48.284 53.8291C46.6226 54.8225 44.8518 55.6796 42.9992 56.373C43.9847 58.3164 45.1339 60.1779 46.4196 61.9303C51.5751 60.3579 56.7852 57.9417 62.1318 53.968C63.5812 38.7949 59.6701 25.5938 50.0681 13.8956H60.1045ZM20.7736 44.0917C17.6653 44.0917 15.1061 41.2333 15.1061 37.7203C15.1061 34.2073 17.6107 31.3489 20.7736 31.3489C23.9638 31.3489 26.4957 34.2073 26.4411 37.7203C26.4411 41.2333 23.9365 44.0917 20.7736 44.0917ZM50.1772 44.0917C47.0689 44.0917 44.5097 41.2333 44.5097 37.7203C44.5097 34.2073 47.0143 31.3489 50.1772 31.3489C53.3674 31.3489 55.8993 34.2073 55.8447 37.7203C55.8447 41.2333 53.3674 44.0917 50.1772 44.0917Z"/>
+          </svg>
+          Entrar com Discord
+        </a>
+      )}
+
       {/* Textos Inferiores */}
       <div className={styles.statusSection}>
-        <p className={styles.statusText}>Autenticando acesso</p>
+        <p className={styles.statusText}>{isComplete ? 'Redirecionando...' : 'Autenticando acesso'}</p>
         <p className={styles.processingText}>
-          PROCESSANDO
+          {isComplete ? 'CONCLUÍDO' : 'PROCESSANDO'}
           <span className={styles.processingDot} />
           <span className={styles.processingDot} />
           <span className={styles.processingDot} />

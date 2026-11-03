@@ -35,4 +35,5 @@ yarn-error.log*
 .npm
 
 # Optional eslint cache
-.eslintcache
+.eslintcache# Server env
+server/.env
