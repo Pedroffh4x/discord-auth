@@ -10,6 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/callback" element={<App />} />
+        <Route path="/verify-callback.html" element={<App />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
